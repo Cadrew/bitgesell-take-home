@@ -21,7 +21,7 @@ function NavBar() {
           <Link to="/" className="nav-link">
             <FaHome className="inline mr-1" /> Home
           </Link>
-          <Link to="/" className="nav-link">
+          <Link to="/products" className="nav-link">
             <FaList className="inline mr-1" /> Products
           </Link>
           <Link to="/cart" className="nav-cart">
@@ -41,6 +41,7 @@ function App() {
       <main className="main-container">
         <Routes>
           <Route path="/" element={<Items />} />
+          <Route path="/products" element={<Items />} />
           <Route path="/items/:id" element={<ItemDetail />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>

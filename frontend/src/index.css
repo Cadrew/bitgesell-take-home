@@ -62,6 +62,9 @@
   .btn-add-to-cart-item {
     @apply btn rounded-none bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-400;
   }
+  .pagination-btn {
+    @apply disabled:text-gray-300 hover:text-gray-400 transition-all duration-200;
+  }
 
   /* Cards */
   .product-card {
