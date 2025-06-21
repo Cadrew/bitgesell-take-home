@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback, useRef } from "react";
 import { useData } from "../state/DataContext";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { FixedSizeList as List } from "react-window";
 
 // Hook to track window height
@@ -35,7 +36,6 @@ function Items() {
   // Refs and measurements for responsive width
   const containerRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(window.innerWidth);
-  const windowHeight = useWindowHeight();
 
   // Measure container width
   useEffect(() => {
@@ -54,7 +54,7 @@ function Items() {
     setLoading(true);
     try {
       const response = await fetchItems({ page, pageSize, q: search });
-      setTotal(response.total);
+      setTotal(response?.total || 0);
     } finally {
       setLoading(false);
     }
@@ -173,6 +173,7 @@ function Items() {
             itemCount={rows.length}
             itemSize={rowHeight}
             width={containerWidth}
+            style={{ overflow: "visible" }}
           >
             {Row}
           </List>
@@ -185,7 +186,7 @@ function Items() {
               className="pagination-btn"
               aria-label="Previous page"
             >
-              Previous
+              <FaAngleLeft className="inline" /> Previous
             </button>
             <span className="text-gray-600 font-medium">
               Page {page} of {totalPages}
@@ -196,7 +197,7 @@ function Items() {
               className="pagination-btn"
               aria-label="Next page"
             >
-              Next
+              Next <FaAngleRight className="inline" />
             </button>
           </div>
         </>

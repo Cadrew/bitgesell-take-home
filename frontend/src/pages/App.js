@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { FaShoppingCart, FaHome, FaList, FaInfoCircle } from "react-icons/fa";
+import { FaShoppingCart, FaHome, FaList } from "react-icons/fa";
 import Items from "./Items";
 import ItemDetail from "./ItemDetail";
 import Cart from "./Cart";
