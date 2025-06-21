@@ -62,7 +62,7 @@ This document outlines the approach taken to address the objectives in the take-
 
 - **Change**: Integrated `react-window` in `Items.js` for list virtualization.
 - **Reason**: Improves rendering performance for large lists.
-- **Implementation**: Used `FixedSizeList` with a 120px height for card-based items.
+- **Implementation**: Used `FixedSizeList` with a 360px height for card-based items.
 - **Trade-offs**: Fixed height simplifies implementation; variable heights would require `VariableSizeList`.
 
 ### 4. UI/UX Polish
