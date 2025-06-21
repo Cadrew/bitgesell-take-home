@@ -69,7 +69,7 @@ This document outlines the approach taken to address the objectives in the take-
 
 - **Change**: Redesigned UI with Tailwind CSS, added card-based layouts, animations, and a modern navbar. Enhanced `ItemDetail.js` for item details.
 - **Reason**: Improves aesthetics, professionalism, and accessibility.
-- **Implementation**: Used Tailwind CSS`for responsive design, added`react-icons` for visual elements, and included skeleton states and ARIA labels.
+- **Implementation**: Used Tailwind CSS for responsive design, added `react-icons` for visual elements, and included skeleton states and ARIA labels.
 - **Trade-offs**:
   - **Pros**: Modern, user-friendly interface with good accessibility.
   - **Cons**: Tailwind bundle size increased; PurgeCSS could optimize.
