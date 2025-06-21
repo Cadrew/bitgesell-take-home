@@ -1,37 +1,82 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaHome, FaList, FaInfoCircle } from "react-icons/fa";
 import Items from "./Items";
 import ItemDetail from "./ItemDetail";
-import { DataProvider } from "../state/DataContext";
+import Cart from "./Cart";
+import { DataProvider, useData } from "../state/DataContext";
+
+function NavBar() {
+  const { cart } = useData();
+  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  return (
+    <nav className="navbar">
+      <div className="nav-container">
+        <Link to="/" className="nav-logo">
+          <FaShoppingCart className="h-6 w-6" />
+          <span>Shop</span>
+        </Link>
+        <div className="nav-menu">
+          <Link to="/" className="nav-link">
+            <FaHome className="inline mr-1" /> Home
+          </Link>
+          <Link to="/" className="nav-link">
+            <FaList className="inline mr-1" /> Products
+          </Link>
+          <Link to="/cart" className="nav-cart">
+            <FaShoppingCart className="h-6 w-6" />
+            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
 
 function App() {
   return (
     <DataProvider>
-      <nav className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <Link to="/" className="flex items-center space-x-2">
-              <FaShoppingCart className="h-6 w-6" />
-              <span className="text-xl font-bold">Shop</span>
-            </Link>
-            <div className="space-x-4">
-              <Link
-                to="/"
-                className="hover:bg-blue-700 px-3 py-2 rounded-md transition"
-              >
-                Items
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <NavBar />
+      <main className="main-container">
         <Routes>
           <Route path="/" element={<Items />} />
           <Route path="/items/:id" element={<ItemDetail />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
+      <footer className="footer">
+        <div className="footer-container">
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">Shop</h4>
+            <p className="text-gray-400">
+              Your trusted destination for premium products.
+            </p>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">
+              Quick Links
+            </h4>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/" className="footer-link">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/products" className="footer-link">
+                  Products
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
+            <p className="text-gray-400">Email: support@shop.com</p>
+            <p className="text-gray-400">Phone: +1 234 567 890</p>
+          </div>
+        </div>
+      </footer>
     </DataProvider>
   );
 }

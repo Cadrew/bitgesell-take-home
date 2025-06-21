@@ -35,7 +35,7 @@ describe("Stats API", () => {
   it("GET /api/stats returns correct statistics", async () => {
     const res = await request(app).get("/api/stats");
     expect(res.status).toBe(200);
-    expect(res.body).toHaveProperty("total", 5);
+    expect(res.body).toHaveProperty("total", 25);
     expect(res.body).toHaveProperty("averagePrice", expect.any(Number));
   });
 

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { useData } from "../state/DataContext";
 
 function ItemDetail() {
   const { id } = useParams();
   const [item, setItem] = useState(null);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { addToCart } = useData();
 
   useEffect(() => {
     let isMounted = true;
-    fetch(`/api/items/${id}`)
+    fetch(`http://localhost:3001/api/items/${id}`)
       .then((res) =>
         res.ok ? res.json() : Promise.reject(new Error("Item not found"))
       )
@@ -24,12 +26,13 @@ function ItemDetail() {
   if (error) {
     return (
       <div className="text-center py-12">
-        <p className="text-red-600 text-lg">{error}</p>
+        <p className="text-red-600 text-lg font-medium">{error}</p>
         <button
           onClick={() => navigate("/")}
-          className="mt-4 inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          className="btn-secondary mt-4"
+          aria-label="Back to products"
         >
-          <FaArrowLeft className="mr-2" /> Back to Items
+          <FaArrowLeft className="mr-2" /> Back to Products
         </button>
       </div>
     );
@@ -37,36 +40,44 @@ function ItemDetail() {
 
   if (!item) {
     return (
-      <div className="animate-pulse max-w-lg mx-auto mt-12 bg-gray-100 rounded-lg p-6 shadow">
-        <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
-        <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
-        <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+      <div className="animate-pulse product-card max-w-2xl mx-auto mt-12">
+        <div className="product-image bg-gray-200"></div>
+        <div className="product-content">
+          <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="max-w-lg mx-auto mt-12">
+    <div className="max-w-2xl mx-auto mt-12">
       <button
         onClick={() => navigate("/")}
-        className="mb-4 inline-flex items-center text-blue-600 hover:text-blue-800"
-        aria-label="Back to items"
+        className="btn-secondary mb-6"
+        aria-label="Back to products"
       >
-        <FaArrowLeft className="mr-2" /> Back to Items
+        <FaArrowLeft className="mr-2" /> Back to Products
       </button>
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-        <div className="p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">{item.name}</h2>
-          <p className="text-gray-600 mb-2">
-            <strong>Category:</strong> {item.category}
-          </p>
-          <p className="text-gray-600 mb-4">
-            <strong>Price:</strong>{" "}
-            <span className="text-green-600 font-semibold">${item.price}</span>
-          </p>
+      <div className="product-card">
+        <div
+          className="product-image"
+          style={{
+            backgroundImage: `url(${item.image || "/placeholder.png"})`,
+            backgroundPosition: "center",
+            backgroundSize: "60%",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></div>
+        <div className="product-content">
+          <h2 className="text-2xl font-bold text-gray-800 mb-3">{item.name}</h2>
+          <p className="product-category mb-2">{item.category}</p>
+          <p className="product-price mb-4">${item.price}</p>
           <button
-            className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            onClick={() => alert("Add to cart functionality not implemented")}
+            className="btn-add-to-cart w-full"
+            onClick={() => addToCart(item)}
+            aria-label={`Add ${item.name} to cart`}
           >
             Add to Cart
           </button>

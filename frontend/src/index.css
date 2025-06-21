@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,7 +7,7 @@
 @layer base {
   html,
   body {
-    @apply bg-gray-50 text-gray-800 font-sans;
+    @apply bg-gray-50 text-gray-900 font-sans antialiased;
   }
   h1,
   h2,
@@ -15,37 +15,95 @@
   h4,
   h5,
   h6 {
-    @apply font-heading text-gray-900;
+    @apply font-heading text-gray-900 tracking-tight;
   }
   a {
-    @apply text-white hover:text-gray-400 transition;
+    @apply text-blue-700 hover:text-blue-900 transition-colors duration-200;
   }
 }
 
 @layer components {
+  /* Navbar */
+  .navbar {
+    @apply bg-white text-gray-900 border-b border-gray-200 sticky top-0 z-50;
+  }
+  .nav-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16;
+  }
+  .nav-logo {
+    @apply flex items-center space-x-3 text-2xl font-bold text-blue-800;
+  }
+  .nav-menu {
+    @apply flex space-x-6 items-center;
+  }
+  .nav-link {
+    @apply text-gray-700 hover:text-blue-700 font-medium transition-colors duration-200 px-3 py-2 rounded-md;
+  }
+  .nav-cart {
+    @apply relative text-gray-700 hover:text-blue-700;
+  }
+  .cart-badge {
+    @apply absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center;
+  }
+
   /* Buttons */
   .btn {
-    @apply inline-flex items-center justify-center px-5 py-2 rounded-xl font-semibold shadow-button transform transition;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold text-base shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
   .btn-primary {
-    @apply btn bg-primary text-white hover:bg-primary-dark;
+    @apply btn bg-blue-700 text-white hover:bg-blue-800 focus:ring-blue-600;
   }
   .btn-secondary {
-    @apply btn bg-secondary text-white hover:opacity-90;
+    @apply btn bg-gray-200 text-gray-900 hover:bg-gray-300 focus:ring-gray-400;
+  }
+  .btn-add-to-cart {
+    @apply btn bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-400;
+  }
+  .btn-add-to-cart-item {
+    @apply btn rounded-none bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-400;
   }
 
   /* Cards */
-  .card {
-    @apply bg-white rounded-xl shadow-card overflow-hidden transition-transform transform hover:-translate-y-1;
+  .product-card {
+    @apply bg-white rounded-2xl shadow-md overflow-hidden transition-all duration-300 ease-in-out border border-gray-100 hover:shadow-xl hover:-translate-y-2;
+  }
+  .product-image {
+    @apply w-full h-48 object-cover bg-gray-100;
+  }
+  .product-content {
+    @apply p-5;
+  }
+  .product-title {
+    @apply text-lg font-semibold text-gray-800 truncate;
+  }
+  .product-price {
+    @apply text-xl font-bold text-blue-700;
+  }
+  .product-category {
+    @apply text-sm text-gray-500 uppercase tracking-wide;
   }
 
   /* Inputs */
   .input {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition;
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl bg-white/70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200;
+  }
+  .search-input {
+    @apply input pl-12 pr-4 bg-gray-50 text-gray-700 placeholder-gray-400 focus:bg-white;
   }
 
-  /* Navbar */
-  .navbar {
-    @apply bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg;
+  /* Footer */
+  .footer {
+    @apply bg-gray-800 text-gray-200 py-8 mt-12;
+  }
+  .footer-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8;
+  }
+  .footer-link {
+    @apply text-gray-300 hover:text-white transition-colors duration-200;
+  }
+
+  /* Layout */
+  .main-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12;
   }
 }

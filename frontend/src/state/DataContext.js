@@ -4,6 +4,7 @@ const DataContext = createContext();
 
 export function DataProvider({ children }) {
   const [items, setItems] = useState([]);
+  const [cart, setCart] = useState([]);
   const [error, setError] = useState(null);
 
   const fetchItems = useCallback(
@@ -28,8 +29,43 @@ export function DataProvider({ children }) {
     []
   );
 
+  const addToCart = useCallback((item) => {
+    setCart((prev) => {
+      const existing = prev.find((cartItem) => cartItem.id === item.id);
+      if (existing) {
+        return prev.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+      }
+      return [...prev, { ...item, quantity: 1 }];
+    });
+  }, []);
+
+  const removeFromCart = useCallback((id) => {
+    setCart((prev) => prev.filter((item) => item.id !== id));
+  }, []);
+
+  const updateCartQuantity = useCallback((id, quantity) => {
+    if (quantity < 1) return;
+    setCart((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
+    );
+  }, []);
+
   return (
-    <DataContext.Provider value={{ items, fetchItems, error }}>
+    <DataContext.Provider
+      value={{
+        items,
+        fetchItems,
+        cart,
+        addToCart,
+        removeFromCart,
+        updateCartQuantity,
+        error,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );
