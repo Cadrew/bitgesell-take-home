@@ -1,7 +1,122 @@
 [
   { "id": 1, "name": "Laptop Pro", "category": "Electronics", "price": 2499 },
-  { "id": 2, "name": "Noise Cancelling Headphones", "category": "Electronics", "price": 399 },
-  { "id": 3, "name": "Ultra‑Wide Monitor", "category": "Electronics", "price": 999 },
+  {
+    "id": 2,
+    "name": "Noise Cancelling Headphones",
+    "category": "Electronics",
+    "price": 399
+  },
+  {
+    "id": 3,
+    "name": "Ultra-Wide Monitor",
+    "category": "Electronics",
+    "price": 999
+  },
   { "id": 4, "name": "Ergonomic Chair", "category": "Furniture", "price": 799 },
-  { "id": 5, "name": "Standing Desk", "category": "Furniture", "price": 1199 }
+  { "id": 5, "name": "Standing Desk", "category": "Furniture", "price": 1199 },
+  { "id": 6, "name": "Wireless Mouse", "category": "Peripherals", "price": 49 },
+  {
+    "id": 7,
+    "name": "Mechanical Keyboard",
+    "category": "Peripherals",
+    "price": 129
+  },
+  { "id": 8, "name": "USB-C Hub", "category": "Accessories", "price": 89 },
+  {
+    "id": 9,
+    "name": "Portable SSD 1TB",
+    "category": "Electronics",
+    "price": 159
+  },
+  { "id": 10, "name": "HD Webcam", "category": "Electronics", "price": 79 },
+  {
+    "id": 11,
+    "name": "Office Desk Lamp",
+    "category": "Furniture",
+    "price": 59
+  },
+  {
+    "id": 12,
+    "name": "Magnetic Whiteboard",
+    "category": "Office Supplies",
+    "price": 39
+  },
+  {
+    "id": 13,
+    "name": "Notebook Pack (5)",
+    "category": "Office Supplies",
+    "price": 19
+  },
+  {
+    "id": 14,
+    "name": "Ballpoint Pen Set (10)",
+    "category": "Office Supplies",
+    "price": 15
+  },
+  {
+    "id": 15,
+    "name": "Laser Printer",
+    "category": "Electronics",
+    "price": 249
+  },
+  {
+    "id": 16,
+    "name": "VoIP Office Phone",
+    "category": "Electronics",
+    "price": 199
+  },
+  {
+    "id": 17,
+    "name": "Wi-Fi 6 Router",
+    "category": "Networking",
+    "price": 149
+  },
+  {
+    "id": 18,
+    "name": "Surge Protector Power Strip",
+    "category": "Accessories",
+    "price": 29
+  },
+  {
+    "id": 19,
+    "name": "Ergonomic Footrest",
+    "category": "Furniture",
+    "price": 49
+  },
+  {
+    "id": 20,
+    "name": "Smart Speaker",
+    "category": "Electronics",
+    "price": 129
+  },
+  {
+    "id": 21,
+    "name": "Portable Projector",
+    "category": "Electronics",
+    "price": 599
+  },
+  {
+    "id": 22,
+    "name": "Conference Speakerphone",
+    "category": "Electronics",
+    "price": 299
+  },
+  {
+    "id": 23,
+    "name": "Noise-Cancelling Microphone",
+    "category": "Electronics",
+    "price": 159
+  },
+  {
+    "id": 24,
+    "name": "Virtual Meeting Software (1yr)",
+    "category": "Software",
+    "price": 99
+  },
+  {
+    "id": 25,
+    "name": "Cable Management Kit",
+    "category": "Accessories",
+    "price": 25
+  }
 ]
