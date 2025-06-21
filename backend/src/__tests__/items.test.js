@@ -3,7 +3,7 @@ const express = require("express");
 const fs = require("fs").promises;
 const path = require("path");
 
-const DATA_PATH = path.join(__dirname, "../../data/items.json");
+const DATA_PATH = path.join(__dirname, "../../../data/items.json");
 
 describe("Items API", () => {
   let originalData;
@@ -12,7 +12,7 @@ describe("Items API", () => {
   beforeEach(async () => {
     originalData = await fs.readFile(DATA_PATH, "utf-8");
 
-    const itemsRouter = require("../src/routes/items");
+    const itemsRouter = require("../routes/items");
     app = express();
     app.use(express.json());
     app.use("/api/items", itemsRouter);

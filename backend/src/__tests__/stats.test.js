@@ -2,7 +2,7 @@ const request = require("supertest");
 const fs = require("fs").promises;
 const path = require("path");
 
-const DATA_PATH = path.join(__dirname, "../../data/items.json");
+const DATA_PATH = path.join(__dirname, "../../../data/items.json");
 
 describe("Stats API", () => {
   let originalData;
@@ -22,7 +22,7 @@ describe("Stats API", () => {
     originalData = await fs.readFile(DATA_PATH, "utf-8");
 
     const express = require("express");
-    const statsRouter = require("../src/routes/stats");
+    const statsRouter = require("../routes/stats");
     app = express();
     app.use(express.json());
     app.use("/api/stats", statsRouter);
